@@ -1,0 +1,23 @@
+{
+  "name": "declarative-story",
+  "version": "1.0.0",
+  "description": "The central documentation, architectural storytelling portal, and guide for the KeshavSoft Declarative UI Ecosystem.",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keshavsoft/declarative-story.git"
+  },
+  "keywords": [
+    "declarative-ui",
+    "documentation",
+    "architecture-story",
+    "json-to-dom",
+    "spec-repo"
+  ],
+  "author": "KeshavSoft",
+  "license": "MIT",
+  "homepage": "https://keshavsoft.github.io/declarative-story/"
+}

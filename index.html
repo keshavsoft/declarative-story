@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>declarative-story — The KeshavSoft Declarative UI Architecture</title>
+  
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #09090b;
+      color: #f4f4f5;
+    }
+    code, pre, .font-mono {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .card-hover {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+    }
+    .card-amber:hover {
+      border-color: rgba(245, 158, 11, 0.5);
+      box-shadow: 0 20px 35px -10px rgba(245, 158, 11, 0.15);
+    }
+    .card-indigo:hover {
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: 0 20px 35px -10px rgba(99, 102, 241, 0.15);
+    }
+    .card-sky:hover {
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 20px 35px -10px rgba(56, 189, 248, 0.15);
+    }
+    .card-emerald:hover {
+      border-color: rgba(16, 185, 129, 0.5);
+      box-shadow: 0 20px 35px -10px rgba(16, 185, 129, 0.15);
+    }
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col bg-zinc-950 text-zinc-100 antialiased selection:bg-sky-500/30 selection:text-sky-200">
+
+  <!-- Top Sticky Navigation Bar -->
+  <nav class="border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+      
+      <!-- Brand -->
+      <a href="./index.html" class="flex items-center gap-2.5 text-zinc-200 hover:text-white transition">
+        <div class="w-7 h-7 rounded-md bg-gradient-to-br from-amber-500 via-sky-500 to-emerald-500 flex items-center justify-center text-white font-bold text-xs shadow-sm">
+          <i class="bi bi-book-half"></i>
+        </div>
+        <span class="font-bold text-sm tracking-wide">declarative-story</span>
+        <span class="text-[10px] font-mono font-medium text-sky-400 bg-sky-950/60 border border-sky-800/60 px-2 py-0.5 rounded-full ml-1">
+          Ecosystem Hub
+        </span>
+      </a>
+
+      <!-- Navigation Chapters -->
+      <div class="flex items-center gap-1 sm:gap-2 text-xs font-mono">
+        <a href="./tags/index.html" class="text-amber-400 hover:text-amber-300 px-2.5 py-1 rounded hover:bg-zinc-900 transition flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+          <span>1. tags</span>
+        </a>
+        <a href="./spec/index.html" class="text-indigo-400 hover:text-indigo-300 px-2.5 py-1 rounded hover:bg-zinc-900 transition flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+          <span>2. spec</span>
+        </a>
+        <a href="./instructions/index.html" class="text-sky-400 hover:text-sky-300 px-2.5 py-1 rounded hover:bg-zinc-900 transition flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+          <span>3. instructions</span>
+        </a>
+        <a href="./definitions/index.html" class="text-emerald-400 hover:text-emerald-300 px-2.5 py-1 rounded hover:bg-zinc-900 transition flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span>4. definitions</span>
+        </a>
+        <span class="text-zinc-700 hidden md:inline">|</span>
+        <a href="https://github.com/keshavsoft/spec-repo" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-white p-1.5 transition ml-1" title="GitHub Orchestrator">
+          <i class="bi bi-github text-sm"></i>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="relative border-b border-zinc-800/60 bg-grid-pattern py-16 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      
+      <div class="inline-flex items-center gap-2 bg-zinc-900/90 border border-sky-500/30 text-sky-400 px-3.5 py-1 rounded-full text-xs font-mono font-medium mb-6 shadow-sm">
+        <i class="bi bi-diagram-3-fill"></i>
+        <span>Architectural Documentation Portal</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-5 leading-tight">
+        The Declarative UI Story
+      </h1>
+
+      <p class="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-8">
+        How KeshavSoft decoupled web component design into four focused repositories: turning complex UI rendering into a predictable, zero-dependency declarative assembly pipeline.
+      </p>
+
+      <!-- 4 Stepper Quick Links -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-w-3xl mx-auto text-xs font-mono">
+        <a href="./tags/index.html" class="bg-zinc-900/90 hover:bg-zinc-850 border border-zinc-800 hover:border-amber-500/60 p-3 rounded-lg transition text-left group">
+          <div class="text-[10px] text-zinc-500 uppercase tracking-wider">Tier 1</div>
+          <div class="text-amber-400 font-bold flex items-center justify-between">
+            <span>tags/</span>
+            <i class="bi bi-arrow-right text-[10px] opacity-0 group-hover:opacity-100 transition"></i>
+          </div>
+          <div class="text-[11px] text-zinc-400 truncate">Taxonomy & Grammar</div>
+        </a>
+
+        <a href="./spec/index.html" class="bg-zinc-900/90 hover:bg-zinc-850 border border-zinc-800 hover:border-indigo-500/60 p-3 rounded-lg transition text-left group">
+          <div class="text-[10px] text-zinc-500 uppercase tracking-wider">Tier 2</div>
+          <div class="text-indigo-400 font-bold flex items-center justify-between">
+            <span>spec/</span>
+            <i class="bi bi-arrow-right text-[10px] opacity-0 group-hover:opacity-100 transition"></i>
+          </div>
+          <div class="text-[11px] text-zinc-400 truncate">DOM Blueprints</div>
+        </a>
+
+        <a href="./instructions/index.html" class="bg-zinc-900/90 hover:bg-zinc-850 border border-zinc-800 hover:border-sky-500/60 p-3 rounded-lg transition text-left group">
+          <div class="text-[10px] text-zinc-500 uppercase tracking-wider">Tier 3</div>
+          <div class="text-sky-400 font-bold flex items-center justify-between">
+            <span>instructions/</span>
+            <i class="bi bi-arrow-right text-[10px] opacity-0 group-hover:opacity-100 transition"></i>
+          </div>
+          <div class="text-[11px] text-zinc-400 truncate">Assembly Pipeline</div>
+        </a>
+
+        <a href="./definitions/index.html" class="bg-zinc-900/90 hover:bg-zinc-850 border border-zinc-800 hover:border-emerald-500/60 p-3 rounded-lg transition text-left group">
+          <div class="text-[10px] text-zinc-500 uppercase tracking-wider">Tier 4</div>
+          <div class="text-emerald-400 font-bold flex items-center justify-between">
+            <span>definitions/</span>
+            <i class="bi bi-arrow-right text-[10px] opacity-0 group-hover:opacity-100 transition"></i>
+          </div>
+          <div class="text-[11px] text-zinc-400 truncate">Component Contracts</div>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Narrative Section -->
+  <main class="flex-1 max-w-6xl mx-auto px-4 sm:px-6 py-14 w-full space-y-16">
+
+    <!-- The 4 Chapters Showcase -->
+    <section>
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-2xl font-bold text-white">The Four Chapters of the Architecture</h2>
+          <p class="text-sm text-zinc-400 mt-1">Click any chapter to read its in-depth design rationale, JSON contracts, and implementation rules.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Chapter 1: Tags -->
+        <div class="bg-zinc-900/60 border border-zinc-800 rounded-xl p-6 sm:p-7 card-hover card-amber flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono font-bold text-amber-400 bg-amber-950 border border-amber-800 px-2.5 py-1 rounded flex items-center gap-1.5">
+                <i class="bi bi-tags-fill"></i>
+                <span>Chapter 1: declarative-tags</span>
+              </span>
+              <span class="text-[10px] text-zinc-500 font-mono">Tier 1</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">The Ground-Truth Dictionary</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">
+              Why every declarative system must start with an authoritative grammar rulebook. Explores allowed attributes, nesting constraints, void tag restrictions, and schema validation.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-zinc-800/80">
+            <a href="./tags/index.html" class="inline-flex items-center gap-2 text-xs font-bold text-amber-400 hover:text-amber-300 transition">
+              <span>Read Chapter 1: Tags &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Chapter 2: Spec -->
+        <div class="bg-zinc-900/60 border border-zinc-800 rounded-xl p-6 sm:p-7 card-hover card-indigo flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono font-bold text-indigo-400 bg-indigo-950 border border-indigo-800 px-2.5 py-1 rounded flex items-center gap-1.5">
+                <i class="bi bi-file-earmark-code"></i>
+                <span>Chapter 2: declarative-spec</span>
+              </span>
+              <span class="text-[10px] text-zinc-500 font-mono">Tier 2</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">DOM Tag Specifications</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">
+              Decoupling HTML element blueprints from JavaScript templates. How raw HTML tags, serializable attributes, CSS classes, and interpolation tokens (<code class="text-zinc-300 font-mono">${columnName}</code>) live in pure JSON.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-zinc-800/80">
+            <a href="./spec/index.html" class="inline-flex items-center gap-2 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition">
+              <span>Read Chapter 2: Spec &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Chapter 3: Instructions -->
+        <div class="bg-zinc-900/60 border border-zinc-800 rounded-xl p-6 sm:p-7 card-hover card-sky flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono font-bold text-sky-400 bg-sky-950 border border-sky-800 px-2.5 py-1 rounded flex items-center gap-1.5">
+                <i class="bi bi-gear-fill"></i>
+                <span>Chapter 3: declarative-instructions</span>
+              </span>
+              <span class="text-[10px] text-zinc-500 font-mono">Tier 3</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">The Assembly Pipeline</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">
+              How declarative JSONPath transformation rules replaced imperative DOM loops. How compilers assemble complex table headers, colgroups, and body rows by executing data-driven transformation instructions.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-zinc-800/80">
+            <a href="./instructions/index.html" class="inline-flex items-center gap-2 text-xs font-bold text-sky-400 hover:text-sky-300 transition">
+              <span>Read Chapter 3: Instructions &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Chapter 4: Definitions -->
+        <div class="bg-zinc-900/60 border border-zinc-800 rounded-xl p-6 sm:p-7 card-hover card-emerald flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-950 border border-emerald-800 px-2.5 py-1 rounded flex items-center gap-1.5">
+                <i class="bi bi-book-half"></i>
+                <span>Chapter 4: declarative-definitions</span>
+              </span>
+              <span class="text-[10px] text-zinc-500 font-mono">Tier 4</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">High-Level Component Contracts</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">
+              The crown of the architecture: 10 production-ready UI component blueprints (Table, Form, Select, Datalist, Card, Accordion) wiring base specs, instruction pipelines, and plug-and-play feature options.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-zinc-800/80">
+            <a href="./definitions/index.html" class="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 hover:text-emerald-300 transition">
+              <span>Read Chapter 4: Definitions &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Why 4 Repositories Narrative Article -->
+    <section class="bg-zinc-900/40 border border-zinc-800/80 rounded-xl p-6 sm:p-10 text-sm text-zinc-300 leading-relaxed space-y-6">
+      <div>
+        <div class="text-xs font-mono uppercase tracking-wider text-sky-400 mb-2">Evolution Story</div>
+        <h2 class="text-2xl font-bold text-white mb-4">Why We Split spec-repo Into Four Repositories</h2>
+      </div>
+
+      <p>
+        In the beginning, <code class="text-sky-300 font-mono">spec-repo</code> was a single repository housing simple HTML tag definitions. But as our compiler engine grew, everything became <strong>instruction-driven</strong>:
+      </p>
+
+      <ul class="list-disc list-inside space-y-2 text-zinc-400 font-mono text-xs pl-2">
+        <li><strong class="text-zinc-200">The Friction:</strong> Tracing a component like <code class="text-zinc-200">table.bodyOnly</code> required hopping through 4 completely different sections in one massive repository—hunting for what the base produced, what the JSONPath was querying, and what attributes were legal.</li>
+        <li><strong class="text-zinc-200">The Breakthrough:</strong> Recognizing that these are four fundamentally different layers of engineering: Grammar (Tags) &rarr; Blueprints (Spec) &rarr; Assembly (Instructions) &rarr; Contracts (Definitions).</li>
+        <li><strong class="text-zinc-200">The Orchestrator Pattern:</strong> Splitting each tier into its own dedicated repository gives every layer 100% single-responsibility focus, while <code class="text-sky-300">spec-repo</code> orchestrates them for the outside world with zero breaking changes.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Clean Minimal Footer -->
+  <footer class="border-t border-zinc-800/80 py-8 text-center text-xs text-zinc-500 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-2 text-zinc-400">
+        <span class="font-semibold text-zinc-300">declarative-story</span>
+        <span>&bull;</span>
+        <span>The KeshavSoft Declarative UI Architecture</span>
+      </div>
+      <p>&copy; 2026 KeshavSoft. Released under the MIT License.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chapter 1: declarative-tags — The Grammar of Declarative UI</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #09090b;
+      color: #f4f4f5;
+    }
+    code, pre, .font-mono {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col bg-zinc-950 text-zinc-100 antialiased selection:bg-amber-500/30 selection:text-amber-200">
+
+  <!-- Navbar -->
+  <nav class="border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <a href="../index.html" class="flex items-center gap-2 text-zinc-400 hover:text-white transition">
+          <i class="bi bi-arrow-left"></i>
+          <span class="font-bold text-sm tracking-wide">declarative-story</span>
+        </a>
+        <span class="text-zinc-600">/</span>
+        <span class="font-bold text-sm text-amber-400">Chapter 1: tags</span>
+      </div>
+
+      <div class="flex items-center gap-3 text-xs font-mono">
+        <a href="https://github.com/keshavsoft/declarative-tags" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-white transition flex items-center gap-1">
+          <i class="bi bi-github"></i>
+          <span>declarative-tags Repo</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="border-b border-zinc-800/60 bg-grid-pattern py-14 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto text-left">
+      <div class="inline-flex items-center gap-2 bg-amber-950/80 border border-amber-800/80 text-amber-400 px-3 py-1 rounded-full text-xs font-mono mb-4">
+        <span>Tier 1 • Ground-Truth Dictionary</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4 tracking-tight">
+        The Grammar of Declarative UI: <span class="text-amber-400">declarative-tags</span>
+      </h1>
+      <p class="text-base text-zinc-400 max-w-2xl leading-relaxed">
+        Why every scalable declarative compiler requires an authoritative tag dictionary before writing a single line of assembly code.
+      </p>
+    </div>
+  </header>
+
+  <!-- Article Body -->
+  <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-12 w-full space-y-12">
+
+    <!-- Section 1 -->
+    <section class="space-y-4 text-sm text-zinc-300 leading-relaxed">
+      <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+        <i class="bi bi-shield-check text-amber-400"></i>
+        <span>1. The Problem: Silent DOM Failures</span>
+      </h2>
+      <p>
+        In traditional frontend applications, developers freely construct HTML tags in JSX or template strings. If someone adds an invalid attribute like <code class="text-zinc-200 font-mono">disabled</code> to a <code class="text-zinc-200 font-mono">&lt;div&gt;</code>, or appends children into an <code class="text-zinc-200 font-mono">&lt;input&gt;</code>, the browser either ignores it silently or creates malformed DOM trees.
+      </p>
+      <p>
+        In a declarative JSON-to-DOM compiler, this cannot be tolerated. The compiler needs a ground-truth rulebook:
+      </p>
+      <ul class="list-disc list-inside space-y-1 text-zinc-400 font-mono text-xs pl-2">
+        <li>Is this HTML tag legal?</li>
+        <li>Is it allowed to have text content?</li>
+        <li>Can it have child elements, or is it a void element?</li>
+        <li>Which exact attributes are legally allowed?</li>
+      </ul>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="space-y-4 text-sm text-zinc-300 leading-relaxed">
+      <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+        <i class="bi bi-file-earmark-code text-amber-400"></i>
+        <span>2. The Tag Taxonomy Contract</span>
+      </h2>
+      <p>
+        Every tag in <code class="text-amber-300 font-mono">tags.json</code> has an exact, schema-enforced structure:
+      </p>
+
+      <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-5 font-mono text-xs text-zinc-300 overflow-x-auto shadow-sm">
+<pre>{
+  "colgroup": {
+    "allowsTextContent": false,
+    "allowsChildren": true,
+    "allowedAttributes": [
+      "span"
+    ],
+    "childTags": [
+      "col"
+    ]
+  },
+  "input": {
+    "allowsTextContent": false,
+    "allowsChildren": false,
+    "allowedAttributes": [
+      "type",
+      "placeholder",
+      "value",
+      "name",
+      "disabled",
+      "readonly",
+      "required",
+      "list"
+    ]
+  }
+}</pre>
+      </div>
+    </section>
+
+    <!-- Next Chapter Stepper -->
+    <div class="pt-8 border-t border-zinc-800 flex items-center justify-between">
+      <a href="../index.html" class="text-xs text-zinc-500 hover:text-white transition">
+        &larr; Back to Ecosystem Hub
+      </a>
+      <a href="../spec/index.html" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs px-4 py-2 rounded-lg transition">
+        <span>Next Chapter: declarative-spec &rarr;</span>
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-zinc-800/80 py-8 text-center text-xs text-zinc-500 bg-zinc-950">
+    <p>&copy; 2026 KeshavSoft. Released under the MIT License.</p>
+  </footer>
+
+</body>
+
+</html>
