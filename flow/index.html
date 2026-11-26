@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Architecture Flow &amp; Fail-Safe Conditions — declarative-story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/story.css">
+</head>
+
+<body class="min-h-screen flex flex-col antialiased">
+  <nav aria-label="Primary" class="border-b border-zinc-800 bg-zinc-950">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-sm">
+      <div class="flex items-center gap-2">
+        <a href="../index.html" class="text-zinc-400 hover:text-white transition flex items-center gap-1.5">
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
+          <span class="font-bold">declarative-story</span>
+        </a>
+        <span class="text-zinc-700" aria-hidden="true">/</span>
+        <span class="font-semibold text-sky-400">Flow &amp; Conditions</span>
+      </div>
+      <a href="../monaco/index.html" class="text-xs font-mono text-zinc-300 hover:text-white transition">Monaco Explorers</a>
+    </div>
+  </nav>
+
+  <header class="border-b border-zinc-800/70 bg-grid-pattern py-12 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto space-y-4 story-prose">
+      <span class="inline-block bg-sky-950/80 border border-sky-800/80 text-sky-400 px-3 py-1 rounded-full text-xs font-mono">
+        Before Writing Guards &amp; Validators
+      </span>
+      <h1 class="story-title font-extrabold tracking-tight text-white">
+        How the Declarative Flow Reveals Every Fail-Safe Condition
+      </h1>
+      <p class="text-base text-zinc-400">
+        When declarations become your single source of truth, bugs happen at boundaries between repos. Follow these five short stories to see how <strong class="text-zinc-200">Tags</strong>, <strong class="text-zinc-200">Spec</strong>, <strong class="text-zinc-200">Instructions</strong>, and <strong class="text-zinc-200">Definitions</strong> depend on one another &mdash; and which checks keep them fail-safe.
+      </p>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full space-y-8">
+    <section aria-labelledby="map-heading" class="space-y-4">
+      <h2 id="map-heading" class="story-section-heading font-bold text-white">Five Bite-Sized Stories</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a href="./chain.html" class="story-card block space-y-2">
+          <span class="text-xs font-mono text-sky-400">Story 1 &bull; The Big Picture</span>
+          <h3 class="text-lg font-bold text-white">The Single Source of Truth Chain</h3>
+          <p class="text-xs text-zinc-400">Tags validate grammar, Spec defines parts, Instructions mutate parts, and Definitions group instructions.</p>
+        </a>
+
+        <a href="./mutation-walkthrough.html" class="story-card block space-y-2">
+          <span class="text-xs font-mono text-indigo-400">Story 2 &bull; Live Example</span>
+          <h3 class="text-lg font-bold text-white">Walkthrough: Mutation Before DOM</h3>
+          <p class="text-xs text-zinc-400">Watch how <code>table.simpleSortable</code> transforms an empty shell into a DOM spec ready for <code>json-to-dom</code>.</p>
+        </a>
+
+        <a href="./condition-spec-vs-tags.html" class="story-card block space-y-2">
+          <span class="text-xs font-mono text-amber-400">Condition Set 1</span>
+          <h3 class="text-lg font-bold text-white">Fail-Safe: Spec Must Obey Tags</h3>
+          <p class="text-xs text-zinc-400">Catch illegal attributes, void-tag children, and unknown tags before specs are published.</p>
+        </a>
+
+        <a href="./condition-instructions-vs-spec.html" class="story-card block space-y-2">
+          <span class="text-xs font-mono text-sky-400">Condition Set 2</span>
+          <h3 class="text-lg font-bold text-white">Fail-Safe: Instructions Need Valid Specs</h3>
+          <p class="text-xs text-zinc-400">Verify <code>type</code>, transformation functions, and that every <code>templateKey</code> exists in <code>spec.json</code>.</p>
+        </a>
+
+        <a href="./condition-definitions-vs-layers.html" class="story-card block space-y-2 md:col-span-2">
+          <span class="text-xs font-mono text-emerald-400">Condition Set 3</span>
+          <h3 class="text-lg font-bold text-white">Fail-Safe: Definitions Must Match Specs &amp; Instructions</h3>
+          <p class="text-xs text-zinc-400">Why <code>baseFromSpec</code>, every key in <code>instructions[]</code>, and <code>data-role</code> slots must match before runtime.</p>
+        </a>
+      </div>
+    </section>
+
+    <div class="pt-6 border-t border-zinc-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <a href="../index.html" class="text-zinc-400 hover:text-white transition">&larr; Back to Ecosystem Hub</a>
+      <a href="./chain.html" class="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold transition">Start Story 1: The Truth Chain &rarr;</a>
+    </div>
+  </main>
+
+  <footer class="border-t border-zinc-800 py-6 text-center text-xs text-zinc-500 bg-zinc-950">
+    <p>&copy; 2026 KeshavSoft &bull; declarative-story / flow</p>
+  </footer>
+</body>
+
+</html>

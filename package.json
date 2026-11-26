@@ -1,6 +1,6 @@
 {
   "name": "declarative-story",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "The central documentation, architectural storytelling portal, and guide for the KeshavSoft Declarative UI Ecosystem.",
   "type": "module",
   "scripts": {

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anatomy of a Tag Rule — Chapter 1: declarative-tags</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../assets/story.css">
+</head>
+
+<body class="min-h-screen flex flex-col antialiased">
+  <nav aria-label="Primary" class="border-b border-zinc-800 bg-zinc-950">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-sm">
+      <div class="flex items-center gap-2">
+        <a href="./index.html" class="text-zinc-400 hover:text-white transition">&larr; Chapter 1: tags</a>
+        <span class="text-zinc-700" aria-hidden="true">/</span>
+        <span class="font-semibold text-amber-400">Tag Rule Anatomy</span>
+      </div>
+      <a href="../flow/condition-spec-vs-tags.html" class="text-xs font-mono text-amber-300 hover:text-amber-200 transition">Fail-Safe Conditions &rarr;</a>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full space-y-7 story-prose">
+    <header class="space-y-3">
+      <span class="text-xs font-mono text-amber-400">Chapter 1 Deep Dive</span>
+      <h1 class="story-title font-extrabold text-white">Anatomy of a Tag Rule</h1>
+      <p class="text-zinc-400">
+        Why does a table cell allow text and children while <code>&lt;col&gt;</code> and <code>&lt;input&gt;</code> cannot hold child tags? <code>tags.json</code> records these rules explicitly so specs never emit invalid HTML.
+      </p>
+    </header>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-5 space-y-2">
+        <h2 class="text-sm font-mono font-bold text-amber-400">Container Tag (&lt;colgroup&gt;)</h2>
+        <pre class="story-code text-zinc-300">{
+  "allowsTextContent": false,
+  "allowsChildren": true,
+  "allowedAttributes": ["span"],
+  "childTags": ["col"]
+}</pre>
+      </div>
+
+      <div class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-5 space-y-2">
+        <h2 class="text-sm font-mono font-bold text-amber-400">Void Tag (&lt;input&gt;)</h2>
+        <pre class="story-code text-zinc-300">{
+  "allowsTextContent": false,
+  "allowsChildren": false,
+  "allowedAttributes": ["type", "placeholder", "name", "list"]
+}</pre>
+      </div>
+    </section>
+
+    <div class="pt-6 border-t border-zinc-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <a href="./index.html" class="text-zinc-400 hover:text-white transition">&larr; Back to Chapter 1</a>
+      <a href="../spec/index.html" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition">Next Chapter: declarative-spec &rarr;</a>
+    </div>
+  </main>
+
+  <footer class="border-t border-zinc-800 py-6 text-center text-xs text-zinc-500 bg-zinc-950">
+    <p>&copy; 2026 KeshavSoft &bull; declarative-story / tags / anatomy</p>
+  </footer>
+</body>
+
+</html>

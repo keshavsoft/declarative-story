@@ -1,5 +1,5 @@
-const CHANNEL_NAME = 'declarative-definitions-v2';
-const STORAGE_KEY = 'declarative-definitions:v2:payload';
+const CHANNEL_NAME = 'declarative-definitions-v3';
+const STORAGE_KEY = 'declarative-definitions:v3:payload';
 
 export const actions = {
   createEditor: (monaco, container, initialValue) => monaco.editor.create(container, {
@@ -28,7 +28,9 @@ export const actions = {
         json = null;
       }
 
+      const key = document.getElementById('editorTitle')?.textContent?.trim() || '';
       const payload = {
+        key,
         text,
         json,
         source: sourceUrl,

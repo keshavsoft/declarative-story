@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recipe Anatomy — Chapter 4: declarative-definitions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../assets/story.css">
+</head>
+
+<body class="min-h-screen flex flex-col antialiased">
+  <nav aria-label="Primary" class="border-b border-zinc-800 bg-zinc-950">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-sm">
+      <div class="flex items-center gap-2">
+        <a href="./index.html" class="text-zinc-400 hover:text-white transition">&larr; Chapter 4: definitions</a>
+        <span class="text-zinc-700" aria-hidden="true">/</span>
+        <span class="font-semibold text-emerald-400">Recipe Anatomy</span>
+      </div>
+      <a href="./sortable-case-study.html" class="text-xs font-mono text-emerald-300 hover:text-emerald-200 transition">Sortable Case Study &rarr;</a>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full space-y-7 story-prose">
+    <header class="space-y-3">
+      <span class="text-xs font-mono text-emerald-400">Definitions Part 1 of 2</span>
+      <h1 class="story-title font-extrabold text-white">Definitions Hold Clean Collections of Instructions</h1>
+      <p class="text-zinc-400">
+        Earlier versions carried inline <code>options</code> maps inside <code>definitions.json</code>. Starting from the decoupled contract, each variation stays minimal &mdash; just one <code>baseFromSpec</code> plus an ordered <code>instructions</code> list.
+      </p>
+    </header>
+
+    <section class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-5 space-y-3">
+      <h2 class="text-sm font-mono font-bold text-emerald-400">table Variations (definitions v5)</h2>
+      <pre class="story-code text-zinc-300">{
+  "table": {
+    "headerOnly":     { "baseFromSpec": "tableHeaderOnly", "instructions": ["buildColgroup", "buildHeader"] },
+    "simple":         { "baseFromSpec": "tableSimple",     "instructions": ["buildColgroup", "buildHeader", "buildBody"] },
+    "withFooter":     { "baseFromSpec": "tableWithFooter", "instructions": ["buildColgroup", "buildHeader", "buildFooter", "buildBody"] },
+    "bodyOnly":       { "baseFromSpec": "tableBodyOnly",   "instructions": ["buildBody"] },
+    "simpleSortable": { "baseFromSpec": "tableSimple",     "instructions": ["buildColgroup", "buildHeaderClickable", "buildBody"] }
+  }
+}</pre>
+      <p class="text-xs text-zinc-400">
+        Optional features (like search or serial columns) are passed by the caller at runtime and resolved directly into keys inside <code>declarative-instructions</code>.
+      </p>
+    </section>
+
+    <div class="pt-6 border-t border-zinc-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <a href="./index.html" class="text-zinc-400 hover:text-white transition">&larr; Back to Chapter 4</a>
+      <a href="./sortable-case-study.html" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition">Next: Sortable Table Case Study &rarr;</a>
+    </div>
+  </main>
+
+  <footer class="border-t border-zinc-800 py-6 text-center text-xs text-zinc-500 bg-zinc-950">
+    <p>&copy; 2026 KeshavSoft &bull; declarative-story / definitions / anatomy</p>
+  </footer>
+</body>
+
+</html>

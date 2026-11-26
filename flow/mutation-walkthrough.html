@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2. Mutation Walkthrough — Flow &amp; Conditions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/story.css">
+</head>
+
+<body class="min-h-screen flex flex-col antialiased">
+  <nav aria-label="Primary" class="border-b border-zinc-800 bg-zinc-950">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-sm">
+      <div class="flex items-center gap-2">
+        <a href="./index.html" class="text-zinc-400 hover:text-white transition">&larr; Flow Map</a>
+        <span class="text-zinc-700" aria-hidden="true">/</span>
+        <span class="font-semibold text-indigo-400">2. Mutation Walkthrough</span>
+      </div>
+      <a href="../index.html" class="text-xs font-mono text-zinc-400 hover:text-white transition">Hub</a>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full space-y-7 story-prose">
+    <header class="space-y-3">
+      <span class="text-xs font-mono text-indigo-400">Story 2 of 5</span>
+      <h1 class="story-title font-extrabold text-white">From Recipe to Rendered Table</h1>
+      <p class="text-zinc-400">
+        Consider rendering <code class="text-emerald-300">table.simpleSortable</code>. The definition itself does not look like HTML &mdash; it tells the runner which base spec to clone and which instructions mutate it.
+      </p>
+    </header>
+
+    <section class="space-y-4">
+      <div class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-5 space-y-2">
+        <div class="text-xs font-mono text-emerald-400">Step A &bull; Definition Lookup (definitions.json)</div>
+        <pre class="story-code text-zinc-200">{
+  "baseFromSpec": "tableSimple",
+  "instructions": ["buildColgroup", "buildHeaderClickable", "buildBody"]
+}</pre>
+      </div>
+
+      <div class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-5 space-y-2">
+        <div class="text-xs font-mono text-indigo-400">Step B &bull; Clone Base Shell (spec.json &rarr; tableSimple)</div>
+        <p class="text-sm text-zinc-300">
+          Clones an empty <code>&lt;table&gt;</code> skeleton containing three empty slot markers:
+          <code>data-role="table-colgroup"</code>, <code>data-role="table-header-row"</code>, and <code>data-role="table-body"</code>.
+        </p>
+      </div>
+
+      <div class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-5 space-y-2">
+        <div class="text-xs font-mono text-sky-400">Step C &bull; Mutate Slot-by-Slot (instructions.json)</div>
+        <ul class="list-disc list-inside text-xs text-zinc-300 space-y-1.5 font-mono">
+          <li><code>buildColgroup</code> &rarr; appends <code>&lt;col&gt;</code> items into <code>table-colgroup</code></li>
+          <li><code>buildHeaderClickable</code> &rarr; stamps <code>tableHeaderClickable</code> (with ⇅ icon) into <code>table-header-row</code></li>
+          <li><code>buildBody</code> &rarr; runs 2D row &times; column cells into <code>table-body</code></li>
+        </ul>
+      </div>
+
+      <div class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-5 space-y-2">
+        <div class="text-xs font-mono text-zinc-300">Step D &bull; Hand Completed DOM JSON to json-to-dom</div>
+        <p class="text-sm text-zinc-300">
+          Only after Step C finishes do we have pure HTML-shaped JSON ready for <code>json-to-dom</code> to mount in the browser.
+        </p>
+      </div>
+    </section>
+
+    <div class="pt-6 border-t border-zinc-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <a href="./chain.html" class="text-zinc-400 hover:text-white transition">&larr; Previous: Truth Chain</a>
+      <a href="./condition-spec-vs-tags.html" class="px-4 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold transition">Next: Condition 1 (Spec vs Tags) &rarr;</a>
+    </div>
+  </main>
+
+  <footer class="border-t border-zinc-800 py-6 text-center text-xs text-zinc-500 bg-zinc-950">
+    <p>&copy; 2026 KeshavSoft &bull; declarative-story / flow / walkthrough</p>
+  </footer>
+</body>
+
+</html>

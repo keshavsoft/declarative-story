@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1. The Truth Chain — Flow &amp; Conditions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/story.css">
+</head>
+
+<body class="min-h-screen flex flex-col antialiased">
+  <nav aria-label="Primary" class="border-b border-zinc-800 bg-zinc-950">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-sm">
+      <div class="flex items-center gap-2">
+        <a href="./index.html" class="text-zinc-400 hover:text-white transition">&larr; Flow Map</a>
+        <span class="text-zinc-700" aria-hidden="true">/</span>
+        <span class="font-semibold text-sky-400">1. The Truth Chain</span>
+      </div>
+      <a href="../index.html" class="text-xs font-mono text-zinc-400 hover:text-white transition">Hub</a>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full space-y-8 story-prose">
+    <header class="space-y-3">
+      <span class="text-xs font-mono text-sky-400">Story 1 of 5</span>
+      <h1 class="story-title font-extrabold text-white">Each Layer Owns One Truth</h1>
+      <p class="text-zinc-400">
+        Instead of writing imperative HTML generation code, we separate declarative knowledge into four focused JSON repositories where every layer points downward cleanly.
+      </p>
+    </header>
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 gap-4" aria-label="Four Declarative Layers">
+      <a href="../tags/index.html" class="story-card block space-y-1.5 border-amber-900/50">
+        <div class="text-xs font-mono text-amber-400">Tier 1 &bull; Grammar</div>
+        <h2 class="text-base font-bold text-white">declarative-tags</h2>
+        <p class="text-xs text-zinc-400">Defines legal HTML tag names, void restrictions, and allowed attributes.</p>
+      </a>
+
+      <a href="../spec/index.html" class="story-card block space-y-1.5 border-indigo-900/50">
+        <div class="text-xs font-mono text-indigo-400">Tier 2 &bull; Parts &amp; Shells</div>
+        <h2 class="text-base font-bold text-white">declarative-spec</h2>
+        <p class="text-xs text-zinc-400">Place where parts are defined: empty container shells and tokenized HTML pieces.</p>
+      </a>
+
+      <a href="../instructions/index.html" class="story-card block space-y-1.5 border-sky-900/50">
+        <div class="text-xs font-mono text-sky-400">Tier 3 &bull; How to Build</div>
+        <h2 class="text-base font-bold text-white">declarative-instructions</h2>
+        <p class="text-xs text-zinc-400">Place where we define how to pick a spec part, merge data, and mutate a base shell.</p>
+      </a>
+
+      <a href="../definitions/index.html" class="story-card block space-y-1.5 border-emerald-900/50">
+        <div class="text-xs font-mono text-emerald-400">Tier 4 &bull; Collections</div>
+        <h2 class="text-base font-bold text-white">declarative-definitions</h2>
+        <p class="text-xs text-zinc-400">Place where we document a named recipe: one base shell + a list of instructions.</p>
+      </a>
+    </section>
+
+    <section class="bg-zinc-900/60 border border-zinc-800 rounded-xl p-5 space-y-2">
+      <h2 class="story-section-heading font-bold text-white">Why Fail-Safe Rules Follow This Arrow</h2>
+      <p class="text-sm text-zinc-300">
+        A rulebook only works because keys flow in one direction: <code>Definitions</code> points to keys in <code>Instructions</code> and <code>Spec</code>; <code>Instructions</code> points to templates in <code>Spec</code>; <code>Spec</code> must obey tags in <code>Tags</code>.
+      </p>
+    </section>
+
+    <div class="pt-6 border-t border-zinc-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <a href="./index.html" class="text-zinc-400 hover:text-white transition">&larr; Flow Map</a>
+      <a href="./mutation-walkthrough.html" class="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold transition">Next: Mutation Walkthrough &rarr;</a>
+    </div>
+  </main>
+
+  <footer class="border-t border-zinc-800 py-6 text-center text-xs text-zinc-500 bg-zinc-950">
+    <p>&copy; 2026 KeshavSoft &bull; declarative-story / flow / chain</p>
+  </footer>
+</body>
+
+</html>

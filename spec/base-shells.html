@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Base Shells — Chapter 2: declarative-spec</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../assets/story.css">
+</head>
+
+<body class="min-h-screen flex flex-col antialiased">
+  <nav aria-label="Primary" class="border-b border-zinc-800 bg-zinc-950">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-sm">
+      <div class="flex items-center gap-2">
+        <a href="./index.html" class="text-zinc-400 hover:text-white transition">&larr; Chapter 2: spec</a>
+        <span class="text-zinc-700" aria-hidden="true">/</span>
+        <span class="font-semibold text-indigo-400">Base Shells</span>
+      </div>
+      <a href="./leaf-parts.html" class="text-xs font-mono text-indigo-300 hover:text-indigo-200 transition">Leaf Parts &rarr;</a>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full space-y-7 story-prose">
+    <header class="space-y-3">
+      <span class="text-xs font-mono text-indigo-400">Spec Part 1 of 2</span>
+      <h1 class="story-title font-extrabold text-white">Base Shells Wait for Slots to Be Filled</h1>
+      <p class="text-zinc-400">
+        A base shell like <code>tableSimple</code> defines the outer wrapper, classes, and named <code>data-role</code> anchor points where instructions will later inject rows and columns.
+      </p>
+    </header>
+
+    <section class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-5 space-y-3">
+      <h2 class="text-sm font-mono font-bold text-indigo-400">Real Slot Structure in tableSimple (spec v4)</h2>
+      <pre class="story-code text-zinc-300">{
+  "tagName": "div",
+  "attributes": { "data-role": "table-parent", "id": "table-parent-id" },
+  "children": [
+    {
+      "tagName": "table",
+      "attributes": { "class": "table table-hover table-striped align-middle border mb-0" },
+      "children": [
+        { "tagName": "colgroup", "attributes": { "data-role": "table-colgroup" }, "children": [] },
+        { "tagName": "thead", "children": [{ "tagName": "tr", "attributes": { "data-role": "table-header-row" }, "children": [] }] },
+        { "tagName": "tbody", "attributes": { "data-role": "table-body" }, "children": [] }
+      ]
+    }
+  ]
+}</pre>
+      <p class="text-xs text-zinc-400">
+        Notice that <code>children</code> arrays inside each <code>data-role</code> start empty &mdash; <code>declarative-spec</code> defines the frame, never the loop.
+      </p>
+    </section>
+
+    <div class="pt-6 border-t border-zinc-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <a href="./index.html" class="text-zinc-400 hover:text-white transition">&larr; Back to Chapter 2</a>
+      <a href="./leaf-parts.html" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition">Next: Leaf Parts &amp; Tokens &rarr;</a>
+    </div>
+  </main>
+
+  <footer class="border-t border-zinc-800 py-6 text-center text-xs text-zinc-500 bg-zinc-950">
+    <p>&copy; 2026 KeshavSoft &bull; declarative-story / spec / base-shells</p>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>4. Fail-Safe: Instructions vs Spec — Flow &amp; Conditions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/story.css">
+</head>
+
+<body class="min-h-screen flex flex-col antialiased">
+  <nav aria-label="Primary" class="border-b border-zinc-800 bg-zinc-950">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-sm">
+      <div class="flex items-center gap-2">
+        <a href="./index.html" class="text-zinc-400 hover:text-white transition">&larr; Flow Map</a>
+        <span class="text-zinc-700" aria-hidden="true">/</span>
+        <span class="font-semibold text-sky-400">4. Instructions vs Spec</span>
+      </div>
+      <a href="../instructions/index.html" class="text-xs font-mono text-sky-400 hover:text-sky-300 transition">Read Instructions Chapter</a>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full space-y-7 story-prose">
+    <header class="space-y-3">
+      <span class="text-xs font-mono text-sky-400">Fail-Safe Condition Set 2</span>
+      <h1 class="story-title font-extrabold text-white">Every Instruction Must Point to a Valid Spec Part</h1>
+      <p class="text-zinc-400">
+        Because <a href="../instructions/index.html" class="text-sky-400 underline underline-offset-4">Instructions</a> tell the engine how to build onto a spec, every instruction needs both a valid execution shape and real template keys in <code>spec.json</code>.
+      </p>
+    </header>
+
+    <section class="bg-zinc-900/70 border border-sky-900/40 rounded-xl p-5 space-y-3">
+      <h2 class="story-section-heading font-bold text-white">Conditions to Check at Instructions Level</h2>
+      <ul class="list-disc list-inside text-sm text-zinc-300 space-y-2">
+        <li><strong>Supported Type:</strong> Object instructions define <code>type</code> as one of <code>"single"</code>, <code>"rowOnColumn"</code>, or <code>"columnOnRow"</code>; option bundles (like <code>set-search</code>) are non-empty step arrays.</li>
+        <li><strong>Template Exists in Spec:</strong> For <code>"single"</code> and array steps, <code>templateKey</code> exists in <code>spec.json</code> (e.g., <code>buildHeaderClickable</code> requires <code>spec.tableHeaderClickable</code>).</li>
+        <li><strong>2D Pair Exists in Spec:</strong> For <code>"rowOnColumn"</code> / <code>"columnOnRow"</code>, both <code>templateKey.rowKey</code> and <code>templateKey.columnKey</code> exist in <code>spec.json</code>.</li>
+        <li><strong>Valid Destination Target:</strong> Every step has <code>destinationPath.fileName === "base"</code> and a parseable <code>jsonPath</code> string when targeting a nested slot.</li>
+      </ul>
+    </section>
+
+    <div class="pt-6 border-t border-zinc-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <a href="./condition-spec-vs-tags.html" class="text-zinc-400 hover:text-white transition">&larr; Previous: Spec vs Tags</a>
+      <a href="./condition-definitions-vs-layers.html" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition">Next: Definitions vs Layers &rarr;</a>
+    </div>
+  </main>
+
+  <footer class="border-t border-zinc-800 py-6 text-center text-xs text-zinc-500 bg-zinc-950">
+    <p>&copy; 2026 KeshavSoft &bull; declarative-story / flow / instructions-vs-spec</p>
+  </footer>
+</body>
+
+</html>

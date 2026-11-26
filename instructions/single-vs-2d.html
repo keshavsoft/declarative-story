@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Single vs 2D &amp; Options — Chapter 3: declarative-instructions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../assets/story.css">
+</head>
+
+<body class="min-h-screen flex flex-col antialiased">
+  <nav aria-label="Primary" class="border-b border-zinc-800 bg-zinc-950">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-sm">
+      <div class="flex items-center gap-2">
+        <a href="./index.html" class="text-zinc-400 hover:text-white transition">&larr; Chapter 3: instructions</a>
+        <span class="text-zinc-700" aria-hidden="true">/</span>
+        <span class="font-semibold text-sky-400">Single, 2D &amp; Option Bundles</span>
+      </div>
+      <a href="../definitions/index.html" class="text-xs font-mono text-emerald-400 hover:text-emerald-300 transition">Chapter 4: definitions &rarr;</a>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full space-y-7 story-prose">
+    <header class="space-y-3">
+      <span class="text-xs font-mono text-sky-400">Instructions Part 2 of 2</span>
+      <h1 class="story-title font-extrabold text-white">Three Instruction Shapes</h1>
+      <p class="text-zinc-400">
+        Every key in <code>instructions.json</code> uses one of three shapes so runners know whether to transform once, iterate a 2D matrix, or apply feature option steps.
+      </p>
+    </header>
+
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-5 space-y-2">
+        <span class="text-xs font-mono font-bold text-sky-400">1. single</span>
+        <h2 class="text-base font-bold text-white">Linear / Single</h2>
+        <p class="text-xs text-zinc-400">Maps 1D arrays like <code>$.columns</code> via <code>fromCollection</code> or objects via <code>applyTemplate</code>.</p>
+      </div>
+
+      <div class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-5 space-y-2">
+        <span class="text-xs font-mono font-bold text-indigo-400">2. rowOnColumn / columnOnRow</span>
+        <h2 class="text-base font-bold text-white">2D Matrix</h2>
+        <p class="text-xs text-zinc-400">Takes both <code>rowKey</code> and <code>columnKey</code> from <code>declarative-spec</code> to stamp table grids or select options.</p>
+      </div>
+
+      <div class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-5 space-y-2">
+        <span class="text-xs font-mono font-bold text-emerald-400">3. Bundle Array</span>
+        <h2 class="text-base font-bold text-white">set-* / *-show-*</h2>
+        <p class="text-xs text-zinc-400">Ordered write-step arrays (<code>set-search</code>, <code>set-serial</code>, <code>options-show-button</code>) resolved at runtime from caller options.</p>
+      </div>
+    </section>
+
+    <div class="pt-6 border-t border-zinc-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <a href="./path-and-slot.html" class="text-zinc-400 hover:text-white transition">&larr; Previous: Source to Slot</a>
+      <a href="../definitions/index.html" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition">Next Chapter: declarative-definitions &rarr;</a>
+    </div>
+  </main>
+
+  <footer class="border-t border-zinc-800 py-6 text-center text-xs text-zinc-500 bg-zinc-950">
+    <p>&copy; 2026 KeshavSoft &bull; declarative-story / instructions / single-vs-2d</p>
+  </footer>
+</body>
+
+</html>
