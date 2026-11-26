@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    if (!location.pathname.endsWith('/') && !location.pathname.split('/').pop().includes('.')) {
+      location.replace(location.pathname + '/' + location.search + location.hash);
+    }
+  </script>
+  <title>Monaco V2 Hub | declarative-story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #09090b;
+      color: #f4f4f5;
+    }
+    code, pre, .font-mono {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    :where(a:any-link, button):focus-visible {
+      outline: 2px solid #38bdf8;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col bg-zinc-950 text-zinc-100 antialiased">
+  <nav aria-label="Primary" class="border-b border-zinc-800 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3 text-sm">
+        <a href="../../index.html" class="text-zinc-400 hover:text-white transition flex items-center gap-1.5">
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
+          <span class="font-semibold">declarative-story</span>
+        </a>
+        <span class="text-zinc-700" aria-hidden="true">/</span>
+        <span class="font-mono text-xs font-semibold text-sky-400">monaco / v2</span>
+      </div>
+      <a href="../v1/index.html" class="text-xs font-mono text-zinc-400 hover:text-zinc-200 transition">V1</a>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-6xl mx-auto px-4 sm:px-6 py-12 w-full space-y-10">
+    <header class="space-y-3">
+      <div class="inline-flex items-center gap-2 bg-sky-950/70 border border-sky-800/60 text-sky-400 px-3 py-1 rounded-full text-xs font-mono">
+        <span>Aligned Monaco V2 &bull; Live GH Pages JSONs</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+        Declarative Monaco Studios
+      </h1>
+      <p class="text-sm sm:text-base text-zinc-400 max-w-3xl leading-relaxed">
+        One aligned workspace for the three declarative repos: <strong class="text-indigo-300">Spec</strong> holds raw HTML tag blueprints, <strong class="text-sky-300">Instructions</strong> maps JSONPath assembly steps, and <strong class="text-emerald-300">Definitions</strong> ties each control &amp; variation together.
+      </p>
+    </header>
+
+    <section aria-labelledby="studios-heading">
+      <h2 id="studios-heading" class="sr-only">Available Studios</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-6 flex flex-col justify-between gap-5">
+          <div class="space-y-2.5">
+            <span class="inline-block text-xs font-mono font-semibold text-indigo-400 bg-indigo-950/80 border border-indigo-800/80 px-2.5 py-0.5 rounded">
+              Tier 2 &bull; spec v4
+            </span>
+            <h3 class="text-lg font-bold text-white">Spec Studio</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+              Pure HTML tag blueprints, Bootstrap classes, and <code class="text-zinc-300">${token}</code> templates from <code class="text-indigo-300">declarative-spec</code>. Single key selector + Tab 2 DOM preview.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-3 border-t border-zinc-800/80 text-xs font-semibold">
+            <a href="./spec/index.html" class="px-3 py-1.5 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white transition">
+              Open Spec Studio
+            </a>
+            <a href="./spec/tab1/index.html" class="px-3 py-1.5 rounded-md bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition">
+              Tab 1 Editor
+            </a>
+          </div>
+        </article>
+
+        <article class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-6 flex flex-col justify-between gap-5">
+          <div class="space-y-2.5">
+            <span class="inline-block text-xs font-mono font-semibold text-sky-400 bg-sky-950/80 border border-sky-800/80 px-2.5 py-0.5 rounded">
+              Tier 3 &bull; instructions v2
+            </span>
+            <h3 class="text-lg font-bold text-white">Instructions Studio</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+              JSONPath build steps and convention option bundles (<code class="text-zinc-300">set-*</code>, <code class="text-zinc-300">search-show-*</code>) from <code class="text-sky-300">declarative-instructions</code>. Single instruction selector.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-3 border-t border-zinc-800/80 text-xs font-semibold">
+            <a href="./instructions/index.html" class="px-3 py-1.5 rounded-md bg-sky-600 hover:bg-sky-500 text-white transition">
+              Open Instructions Studio
+            </a>
+          </div>
+        </article>
+
+        <article class="bg-zinc-900/70 border border-zinc-800 rounded-xl p-6 flex flex-col justify-between gap-5">
+          <div class="space-y-2.5">
+            <span class="inline-block text-xs font-mono font-semibold text-emerald-400 bg-emerald-950/80 border border-emerald-800/80 px-2.5 py-0.5 rounded">
+              Tier 4 &bull; definitions v3
+            </span>
+            <h3 class="text-lg font-bold text-white">Definitions Studio</h3>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+              Pure component contracts (<code class="text-zinc-300">baseFromSpec</code> + <code class="text-zinc-300">instructions</code>) from <code class="text-emerald-300">declarative-definitions</code>. Two-level Control &rarr; Variation selector.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-3 border-t border-zinc-800/80 text-xs font-semibold">
+            <a href="./definitions/index.html" class="px-3 py-1.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white transition">
+              Open Definitions Studio
+            </a>
+            <a href="./definitions/tab1/index.html" class="px-3 py-1.5 rounded-md bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition">
+              Tab 1 Editor
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-zinc-800/80 py-6 text-center text-xs text-zinc-500 bg-zinc-950">
+    <p>&copy; 2026 KeshavSoft &bull; declarative-story / monaco / v2</p>
+  </footer>
+</body>
+
+</html>

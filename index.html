@@ -65,19 +65,23 @@
       background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
       background-size: 24px 24px;
     }
+    :where(a:any-link, button):focus-visible {
+      outline: 2px solid #38bdf8;
+      outline-offset: 2px;
+    }
   </style>
 </head>
 
 <body class="min-h-screen flex flex-col bg-zinc-950 text-zinc-100 antialiased selection:bg-sky-500/30 selection:text-sky-200">
 
   <!-- Top Sticky Navigation Bar -->
-  <nav class="border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md sticky top-0 z-50">
+  <nav aria-label="Primary" class="border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
       
       <!-- Brand -->
       <a href="./index.html" class="flex items-center gap-2.5 text-zinc-200 hover:text-white transition">
         <div class="w-7 h-7 rounded-md bg-gradient-to-br from-amber-500 via-sky-500 to-emerald-500 flex items-center justify-center text-white font-bold text-xs shadow-sm">
-          <i class="bi bi-book-half"></i>
+          <i class="bi bi-book-half" aria-hidden="true"></i>
         </div>
         <span class="font-bold text-sm tracking-wide">declarative-story</span>
         <span class="text-[10px] font-mono font-medium text-sky-400 bg-sky-950/60 border border-sky-800/60 px-2 py-0.5 rounded-full ml-1">
@@ -85,32 +89,27 @@
         </span>
       </a>
 
-      <!-- Navigation Chapters -->
+      <!-- Navigation Chapters (1-4 only) -->
       <div class="flex items-center gap-1 sm:gap-2 text-xs font-mono">
         <a href="./tags/index.html" class="text-amber-400 hover:text-amber-300 px-2.5 py-1 rounded hover:bg-zinc-900 transition flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400" aria-hidden="true"></span>
           <span>1. tags</span>
         </a>
         <a href="./spec/index.html" class="text-indigo-400 hover:text-indigo-300 px-2.5 py-1 rounded hover:bg-zinc-900 transition flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-400" aria-hidden="true"></span>
           <span>2. spec</span>
         </a>
         <a href="./instructions/index.html" class="text-sky-400 hover:text-sky-300 px-2.5 py-1 rounded hover:bg-zinc-900 transition flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-sky-400" aria-hidden="true"></span>
           <span>3. instructions</span>
         </a>
         <a href="./definitions/index.html" class="text-emerald-400 hover:text-emerald-300 px-2.5 py-1 rounded hover:bg-zinc-900 transition flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true"></span>
           <span>4. definitions</span>
         </a>
-        <span class="text-zinc-700 hidden md:inline">|</span>
-        <a href="./monaco/v1/index.html" class="text-zinc-200 hover:text-white bg-zinc-900 border border-zinc-700/80 px-2.5 py-1 rounded transition flex items-center gap-1.5">
-          <i class="bi bi-code-square text-sky-400" aria-hidden="true"></i>
-          <span>Monaco V1</span>
-        </a>
-        <span class="text-zinc-700 hidden md:inline">|</span>
-        <a href="https://github.com/keshavsoft/spec-repo" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-white p-1.5 transition ml-1" title="GitHub Orchestrator">
-          <i class="bi bi-github text-sm"></i>
+        <span class="text-zinc-700 hidden md:inline" aria-hidden="true">|</span>
+        <a href="https://github.com/keshavsoft/spec-repo" target="_blank" rel="noopener noreferrer" aria-label="GitHub Orchestrator Repository" class="text-zinc-400 hover:text-white p-1.5 transition ml-1" title="GitHub Orchestrator">
+          <i class="bi bi-github text-sm" aria-hidden="true"></i>
         </a>
       </div>
 
@@ -278,6 +277,67 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- Separate Monaco Studios Menu -->
+    <section aria-labelledby="monaco-menu-heading" class="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 sm:p-8 space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-800/80 pb-5">
+        <div class="space-y-1.5">
+          <div class="inline-flex items-center gap-2 bg-sky-950/70 border border-sky-800/60 text-sky-400 px-2.5 py-0.5 rounded-full text-[11px] font-mono">
+            <i class="bi bi-code-square" aria-hidden="true"></i>
+            <span>Interactive Monaco Explorers</span>
+          </div>
+          <h2 id="monaco-menu-heading" class="text-2xl font-bold text-white">Monaco Studios Menu</h2>
+          <p class="text-sm text-zinc-400">Open the aligned Monaco V2 studios reading live GitHub Pages JSONs, or revisit the V1 snapshot.</p>
+        </div>
+
+        <nav aria-label="Monaco Hubs" class="flex flex-wrap items-center gap-2.5 text-xs font-mono shrink-0">
+          <a href="./monaco/v2/index.html" class="px-3.5 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold transition flex items-center gap-1.5">
+            <i class="bi bi-grid-1x2" aria-hidden="true"></i>
+            <span>Monaco V2 Hub</span>
+          </a>
+          <a href="./monaco/v1/index.html" class="px-3 py-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-300 hover:text-white transition">
+            V1 Archive
+          </a>
+        </nav>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-zinc-950/70 border border-zinc-800 rounded-lg p-5 flex flex-col justify-between gap-4">
+          <div class="space-y-1.5">
+            <span class="text-[11px] font-mono font-semibold text-indigo-400">Tier 2 &bull; spec v4</span>
+            <h3 class="text-base font-bold text-white">Spec Studio</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">Inspect or edit <code class="text-zinc-300">spec.json</code> blueprints and open live Tab 2 DOM renders.</p>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs font-semibold pt-2 border-t border-zinc-800/70">
+            <a href="./monaco/v2/spec/tab1/index.html" class="px-3 py-1.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white transition">Tab 1 Editor</a>
+            <a href="./monaco/v2/spec/index.html" class="px-3 py-1.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition">Studio Hub</a>
+          </div>
+        </div>
+
+        <div class="bg-zinc-950/70 border border-zinc-800 rounded-lg p-5 flex flex-col justify-between gap-4">
+          <div class="space-y-1.5">
+            <span class="text-[11px] font-mono font-semibold text-sky-400">Tier 3 &bull; instructions v2</span>
+            <h3 class="text-base font-bold text-white">Instructions Studio</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">Browse JSONPath assembly rules and <code class="text-zinc-300">set-*</code> option steps.</p>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs font-semibold pt-2 border-t border-zinc-800/70">
+            <a href="./monaco/v2/instructions/index.html" class="px-3 py-1.5 rounded bg-sky-600 hover:bg-sky-500 text-white transition">Open Studio</a>
+          </div>
+        </div>
+
+        <div class="bg-zinc-950/70 border border-zinc-800 rounded-lg p-5 flex flex-col justify-between gap-4">
+          <div class="space-y-1.5">
+            <span class="text-[11px] font-mono font-semibold text-emerald-400">Tier 4 &bull; definitions v3</span>
+            <h3 class="text-base font-bold text-white">Definitions Studio</h3>
+            <p class="text-xs text-zinc-400 leading-relaxed">Drill down by Control &rarr; Variation and open live Tab 2 DOM renders.</p>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs font-semibold pt-2 border-t border-zinc-800/70">
+            <a href="./monaco/v2/definitions/tab1/index.html" class="px-3 py-1.5 rounded bg-emerald-600 hover:bg-emerald-500 text-white transition">Tab 1 Editor</a>
+            <a href="./monaco/v2/definitions/index.html" class="px-3 py-1.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition">Studio Hub</a>
+          </div>
+        </div>
       </div>
     </section>
 

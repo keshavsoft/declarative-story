@@ -1,0 +1,17 @@
+[
+  {
+    "event": "change",
+    "selector": "#rootSelect",
+    "action": "selectRoot"
+  },
+  {
+    "event": "change",
+    "selector": "#variantSelect",
+    "action": "selectVariant"
+  },
+  {
+    "event": "click",
+    "selector": "#showAll",
+    "action": "showAll"
+  }
+]
