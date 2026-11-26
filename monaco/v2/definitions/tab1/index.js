@@ -1,7 +1,7 @@
 import { initRightEditor } from './components/right/js/index.js';
 import { initLeftWorkspace } from './components/left/js/index.js';
 
-const DEFINITIONS_URL = 'https://keshavsoft.github.io/declarative-definitions/json/v3/definitions.json';
+const DEFINITIONS_URL = 'https://keshavsoft.github.io/declarative-definitions/json/v4/definitions.json';
 
 async function loadDefinitions(url) {
   const response = await fetch(url);
