@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    if (!location.pathname.endsWith('/') && !location.pathname.split('/').pop().includes('.')) {
+      location.replace(location.pathname + '/' + location.search + location.hash);
+    }
+  </script>
+  <title>Spec Studio · Tab 1 | Monaco V3</title>
+  <link rel="stylesheet" href="./workspace/css/workspace.css">
+  <link rel="stylesheet" href="./components/left/css/left.css">
+  <link rel="stylesheet" href="./components/right/css/right.css">
+</head>
+
+<body>
+  <main class="workspace" id="leftWorkspace">
+    <aside class="left-workspace" aria-label="Spec Selectors">
+      <div class="studio-top">
+        <span class="studio-badge studio-badge--indigo">TIER 2 · SPEC</span>
+        <a href="../../index.html" class="hub-link" title="Back to Monaco V3 Hub">&larr; Hub</a>
+      </div>
+
+      <p class="studio-story">
+        Pure HTML tag blueprints, utility classes, and <code class="story-code">${token}</code> templates from <code class="story-code">declarative-spec</code>.
+      </p>
+
+      <div class="control-group">
+        <label for="rootSelect">Spec Key</label>
+        <select id="rootSelect">
+          <option value="">Select Spec Key</option>
+        </select>
+      </div>
+
+      <button id="showAll" class="show-all-btn" type="button">Show all</button>
+    </aside>
+
+    <section class="right-workspace" id="rightWorkspace" aria-label="Monaco Editor">
+      <div class="editor-header">
+        <div class="editor-header-left">
+          <span id="editorTitle">spec.json</span>
+          <span id="editorPath">Complete library</span>
+        </div>
+        <div class="editor-header-right">
+          <span id="editorUrl" class="editor-url-pill" title=""></span>
+          <button id="renderBtn" class="render-btn" type="button">Render</button>
+        </div>
+      </div>
+      <div id="monacoEditor" class="monaco-editor"></div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
+  <script type="module" src="./index.js"></script>
+</body>
+
+</html>

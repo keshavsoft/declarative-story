@@ -1,0 +1,7 @@
+[
+  {
+    "event": "click",
+    "selector": "#renderBtn",
+    "action": "renderOutput"
+  }
+]
